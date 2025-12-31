@@ -18,7 +18,7 @@ from networksecurity.exception.exception import NetworkSecurityException
 from networksecurity.logging.logger import logging
 
 
-class NetworkDataEcxtract:
+class NetworkDataExtract:
     def __init__(self):
         try:
             pass
@@ -59,7 +59,7 @@ if __name__ == "__main__":
     FILE_PATH = r"Network_Data\phisingData.csv"
     DATABASE = "ARMANIX_PROJ"
     COLLECTION = "NetworkData"
-    networkobj = NetworkDataEcxtract()
+    networkobj = NetworkDataExtract()
     records = networkobj.csv_to_json(FILE_PATH)
     print(records)
     number_of_records= networkobj.insert_data_mongodb(records= records, database= DATABASE, collection= COLLECTION)

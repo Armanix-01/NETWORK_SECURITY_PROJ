@@ -56,7 +56,7 @@ class DataTransformation:
             ##Testing dataframe
             input_feature_test_df = test_df.drop(columns=[training_pipeline.TARGET_COLUMN], axis=1)
             target_feature_test_df = test_df[training_pipeline.TARGET_COLUMN]
-            target_feature_test_df.replace(-1, 0)
+            target_feature_test_df=target_feature_test_df.replace(-1, 0)
 
             preprocessor = self.get_data_transformer_object()
             preprocessor_obj = preprocessor.fit(input_feature_train_df)
