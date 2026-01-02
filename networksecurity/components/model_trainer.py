@@ -17,6 +17,8 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import r2_score
 import mlflow
+import dagshub
+dagshub.init(repo_owner='armanixofficial01', repo_name='NETWORK_SECURITY_PROJ', mlflow=True)
 
 
 
@@ -56,20 +58,20 @@ class ModelTrainer:
             "Decision Tree": {
                 'criterion':['gini', 'entropy', 'log_loss'],
 
-                # 'splitter':['best','random'],
-                # 'max_features':['sqrt','log2'],
+                'splitter':['best','random'],
+                'max_features':['sqrt','log2'],
             },
             "Random Forest":{
-                # 'criterion':['gini', 'entropy', 'log_loss'],
-                # 'max_features':['sqrt','log2',None],
+                'criterion':['gini', 'entropy', 'log_loss'],
+                'max_features':['sqrt','log2',None],
                 'n_estimators': [8,16,32,128,256]
             },
             "Gradient Boosting":{
-                # 'loss':['log_loss', 'exponential'],
+                'loss':['log_loss', 'exponential'],
                 'learning_rate':[.1,.01,.05,.001],
                 'subsample':[0.6,0.7,0.75,0.85,0.9],
-                # 'criterion':['squared_error', 'friedman_mse'],
-                # 'max_features':['auto','sqrt','log2'],
+                'criterion':['squared_error', 'friedman_mse'],
+                'max_features':['auto','sqrt','log2'],
                 'n_estimators': [8,16,32,64,128,256]
             },
             "Logistic Regression":{},
@@ -102,7 +104,7 @@ class ModelTrainer:
 
             y_test_pred = best_model.predict(x_test)
             classification_test_metric = get_classification_score(y_test, y_test_pred)
-            self.track_mlflow(best_model=best_model, classificationmetric=classification_train_metric)
+            self.track_mlflow(best_model=best_model, classificationmetric=classification_test_metric)
 
 
             preprocessor= load_obj(self.data_transformation_artifact.transformed_object_file_path)
@@ -122,6 +124,7 @@ class ModelTrainer:
                 train_metric_artifact= classification_train_metric
             )
             logging.info("model_trainer_artifact_created")
+            save_object("final_model/model.pkl", best_model)
             return model_trainer_artifact
 
 
