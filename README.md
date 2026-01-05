@@ -8,18 +8,27 @@ The goal of this project is to demonstrate how ML systems are built, versioned, 
 ---
 
 ## 🧠 Problem Statement
-Traditional ML projects often stop at model training and lack:
-- Automation
-- Versioning
-- Deployment
-- Monitoring readiness
+This project focuses on **predicting whether a website is phishing or legitimate** using machine learning, while solving key production challenges that prevent ML models from being used reliably in real-world systems.
 
-This project solves that by implementing a **fully modular and automated ML pipeline** that:
-- Ingests and validates data
-- Transforms features
-- Trains and evaluates models
-- Stores artifacts and models in AWS S3
-- Deploys the application using Docker, EC2, and GitHub Actions
+Many machine learning projects stop at training a model and fail to address real-world production challenges such as:
+
+- Lack of automation
+- No proper versioning of data, artifacts, or models
+- No deployment strategy
+- Poor production and monitoring readiness
+
+As a result, models remain confined to notebooks and cannot be reliably used in real applications.
+
+This project addresses these gaps by building a **fully modular, automated, and production-ready ML system** that:
+
+- Ingests and validates phishing website data
+- Transforms features and trains ML models
+- Evaluates and versions trained models
+- Stores artifacts and final models in **AWS S3**
+- Deploys the system using **Docker, AWS EC2, and GitHub Actions (CI/CD)**
+
+In addition, the project includes a **FastAPI-based web application** that uses the trained machine learning model to **predict whether a given website is phishing or legitimate**, demonstrating how the system can be used for real-world inference and security decision-making.
+
 
 ---
 
