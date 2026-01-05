@@ -7,6 +7,9 @@ from networksecurity.exception.exception import NetworkSecurityException
 from networksecurity.logging.logger import logging
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import r2_score
+import dagshub
+from dotenv import load_dotenv
+load_dotenv()
 
 
 
@@ -97,3 +100,40 @@ def evaluate_models(x_train, y_train, x_test, y_test, models:dict, param:dict):
 
     except Exception as e:
         raise NetworkSecurityException(e, sys)
+    
+
+
+
+
+_DAGSHUB_INITIALIZED = False
+
+def setup_dagshub():
+    global _DAGSHUB_INITIALIZED
+
+    if _DAGSHUB_INITIALIZED:
+        return
+
+    if os.getenv("ENABLE_DAGSHUB", "false").lower() != "true":
+        return
+
+    token = os.getenv("DAGSHUB_TOKEN")
+    if not token:
+        raise RuntimeError("DAGSHUB_TOKEN not found")
+
+    try:
+        dagshub.auth.add_app_token(token=token)
+
+        dagshub.init(
+            repo_owner="armanixofficial01",
+            repo_name="NETWORK_SECURITY_PROJ",
+            mlflow=True
+        )
+
+        _DAGSHUB_INITIALIZED = True
+        print("✅ DagsHub initialized successfully")
+
+    except Exception as e:
+        print("❌ Failed to initialize DagsHub:", e)
+        raise
+
+

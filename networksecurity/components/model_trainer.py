@@ -17,8 +17,8 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import r2_score
 import mlflow
-import dagshub
-dagshub.init(repo_owner='armanixofficial01', repo_name='NETWORK_SECURITY_PROJ', mlflow=True)
+from networksecurity.utils.main_utils.utils import setup_dagshub
+
 
 
 
@@ -135,6 +135,7 @@ class ModelTrainer:
         
     def initiate_model_trainer(self):
         try:
+            setup_dagshub()
             train_file_path = self.data_transformation_artifact.transformed_train_file_path
             test_file_path = self.data_transformation_artifact.transformed_test_file_path
 
