@@ -95,6 +95,9 @@ jobs:
         run: |
           docker run -d \
             -p 8080:8080 \
+            -e MONGO_DB_URL=${{secrets.MONGO_DB_URL}} \
+            -e DAGSHUB_TOKEN=${{secrets.DAGSHUB_TOKEN}} \
+            -e ENABLE_DAGSHUB=${{secrets.ENABLE_DAGSHUB}} \
             --name mltest \
             ${{ secrets.AWS_ECR_LOGIN_URI }}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
 
