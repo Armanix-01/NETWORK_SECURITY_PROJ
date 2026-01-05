@@ -131,7 +131,7 @@ A complete working demo is available as a video showing:
 
 ## 👤 Author
 **Arman Singh**  
-Aspiring ML / MLOps Engineer
+
 
 🔗 LinkedIn: <[https://www.linkedin.com/in/arman-singh-198343363/]>  
 🐙 GitHub: <[https://github.com/Armanix-01]>
