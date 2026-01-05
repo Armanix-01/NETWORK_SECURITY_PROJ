@@ -1,7 +1,7 @@
 # 🔐 Network Security ML Pipeline
 
 ## 📌 Overview
-This project is an **end-to-end, production-grade Machine Learning pipeline** for a **network security use case**, designed with real-world **MLOps practices**. It covers everything from data ingestion to model training and automated deployment on AWS using CI/CD.
+This project is an **end-to-end, Machine Learning pipeline** for a **network security use case**, designed with real-world **MLOps practices**. It covers everything from data ingestion to model training and automated deployment on AWS using CI/CD.
 
 The goal of this project is to demonstrate how ML systems are built, versioned, deployed, and maintained in production — not just how models are trained.
 
