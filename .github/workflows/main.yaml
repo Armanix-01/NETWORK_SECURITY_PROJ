@@ -1,11 +1,13 @@
 name: workflow
 
 on:
-    push:
-        branches:
-            - main
-        paths-ignore:
-            - README.md
+    workflow_dispatch:
+# NOTE:
+# Automatic trigger on `push` is intentionally DISABLED.
+# This workflow runs only via manual trigger to:
+# - avoid unnecessary cloud usage
+# - prevent failed runs in public repositories
+# - keep the Actions tab clean for showcase purposes
 
 
 jobs:
